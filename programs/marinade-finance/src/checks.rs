@@ -71,19 +71,19 @@ pub fn check_owner_program<'info, A: ToAccountInfo<'info>>(
 //     }
 // }
 
-pub fn check_token_owner(token: &TokenAccount, owner: &Pubkey, field_name: &str) -> Result<()> {
-    if token.owner == *owner {
-        Ok(())
-    } else {
-        msg!(
-            "Invalid token account {} owner {}. Expected {}",
-            field_name,
-            token.owner,
-            owner
-        );
-        Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
-    }
-}
+// pub fn check_token_owner(token: &TokenAccount, owner: &Pubkey, field_name: &str) -> Result<()> {
+//     if token.owner == *owner {
+//         Ok(())
+//     } else {
+//         msg!(
+//             "Invalid token account {} owner {}. Expected {}",
+//             field_name,
+//             token.owner,
+//             owner
+//         );
+//         Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
+//     }
+// }
 
 // check that the account is delegated and to the right validator
 // also that the stake amount is updated
