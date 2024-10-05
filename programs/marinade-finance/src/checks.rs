@@ -25,19 +25,19 @@ pub fn check_owner_program<'info, A: ToAccountInfo<'info>>(
     }
 }
 
-pub fn check_mint_authority(mint: &Mint, mint_authority: &Pubkey, field_name: &str) -> Result<()> {
-    if mint.mint_authority.contains(mint_authority) {
-        Ok(())
-    } else {
-        msg!(
-            "Invalid {} mint authority {}. Expected {}",
-            field_name,
-            mint.mint_authority.unwrap_or_default(),
-            mint_authority
-        );
-        Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
-    }
-}
+// pub fn check_mint_authority(mint: &Mint, mint_authority: &Pubkey, field_name: &str) -> Result<()> {
+//     if mint.mint_authority.contains(mint_authority) {
+//         Ok(())
+//     } else {
+//         msg!(
+//             "Invalid {} mint authority {}. Expected {}",
+//             field_name,
+//             mint.mint_authority.unwrap_or_default(),
+//             mint_authority
+//         );
+//         Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
+//     }
+// }
 
 pub fn check_freeze_authority(mint: &Mint, field_name: &str) -> Result<()> {
     if mint.freeze_authority.is_none() {
@@ -132,28 +132,28 @@ macro_rules! require_lt {
     };
 }
 
-// pub fn check_token_source_account<'info>(
-//     source_account: &Account<'info, TokenAccount>,
-//     authority: &Pubkey,
-//     token_amount: u64,
-// ) -> Result<()> {
-//     if source_account.delegate.contains(authority) {
-//         // if delegated, check delegated amount
-//         // delegated_amount & delegate must be set on the user's msol account before calling OrderUnstake
-//         require_lte!(
-//             token_amount,
-//             source_account.delegated_amount,
-//             MarinadeError::NotEnoughUserFunds
-//         );
-//     } else if *authority == source_account.owner {
-//         require_lte!(
-//             token_amount,
-//             source_account.amount,
-//             MarinadeError::NotEnoughUserFunds
-//         );
-//     } else {
-//         return err!(MarinadeError::WrongTokenOwnerOrDelegate)
-//             .map_err(|e| e.with_pubkeys((source_account.owner, *authority)));
-//     }
-//     Ok(())
-// }
+pub fn check_token_source_account<'info>(
+    source_account: &Account<'info, TokenAccount>,
+    authority: &Pubkey,
+    token_amount: u64,
+) -> Result<()> {
+    if source_account.delegate.contains(authority) {
+        // if delegated, check delegated amount
+        // delegated_amount & delegate must be set on the user's msol account before calling OrderUnstake
+        require_lte!(
+            token_amount,
+            source_account.delegated_amount,
+            MarinadeError::NotEnoughUserFunds
+        );
+    } else if *authority == source_account.owner {
+        require_lte!(
+            token_amount,
+            source_account.amount,
+            MarinadeError::NotEnoughUserFunds
+        );
+    } else {
+        return err!(MarinadeError::WrongTokenOwnerOrDelegate)
+            .map_err(|e| e.with_pubkeys((source_account.owner, *authority)));
+    }
+    Ok(())
+}
