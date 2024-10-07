@@ -1,8 +1,8 @@
 //! Common calculations
 
-// use crate::error::MarinadeError;
-// use anchor_lang::prelude::{error, Result};
-// use std::convert::TryFrom;
+use crate::error::MarinadeError;
+use anchor_lang::prelude::{error, Result};
+use std::convert::TryFrom;
 
 /// calculate amount*numerator/denominator
 /// as value  = shares * share_price where share_price=total_value/total_shares

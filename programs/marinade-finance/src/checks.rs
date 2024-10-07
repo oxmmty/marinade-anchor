@@ -85,6 +85,7 @@ pub fn check_token_owner(token: &TokenAccount, owner: &Pubkey, field_name: &str)
     }
 }
 
+
 check that the account is delegated and to the right validator
 also that the stake amount is updated
 pub fn check_stake_amount_and_validator(
@@ -113,6 +114,7 @@ pub fn check_stake_amount_and_validator(
     }
     Ok(())
 }
+
 
 #[macro_export]
 macro_rules! require_lte {
