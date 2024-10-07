@@ -125,37 +125,3 @@ macro_rules! require_lte {
     };
 }
 
-#[macro_export]
-macro_rules! require_lt {
-    ($value1: expr, $value2: expr, $error_code: expr $(,)?) => {
-        if $value1 >= $value2 {
-            return Err(error!($error_code).with_values(($value1, $value2)));
-        }
-    };
-}
-
-pub fn check_token_source_account<'info>(
-    source_account: &Account<'info, TokenAccount>,
-    authority: &Pubkey,
-    token_amount: u64,
-) -> Result<()> {
-    if source_account.delegate.contains(authority) {
-        // if delegated, check delegated amount
-        // delegated_amount & delegate must be set on the user's msol account before calling OrderUnstake
-        require_lte!(
-            token_amount,
-            source_account.delegated_amount,
-            MarinadeError::NotEnoughUserFunds
-        );
-    } else if *authority == source_account.owner {
-        require_lte!(
-            token_amount,
-            source_account.amount,
-            MarinadeError::NotEnoughUserFunds
-        );
-    } else {
-        return err!(MarinadeError::WrongTokenOwnerOrDelegate)
-            .map_err(|e| e.with_pubkeys((source_account.owner, *authority)));
-    }
-    Ok(())
-}
