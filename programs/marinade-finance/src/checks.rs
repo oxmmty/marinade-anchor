@@ -3,27 +3,27 @@ use anchor_lang::prelude::*;
 use anchor_lang::solana_program::stake::state::StakeState;
 use anchor_spl::token::{Mint, TokenAccount};
 
-pub fn check_owner_program<'info, A: ToAccountInfo<'info>>(
-    account: &A,
-    owner: &Pubkey,
-    field_name: &str,
-) -> Result<()> {
-    let actual_owner = account.to_account_info().owner;
-    if actual_owner == owner {
-        Ok(())
-    } else {
-        msg!(
-            "Invalid {} owner_program: expected {} got {}",
-            field_name,
-            owner,
-            actual_owner
-        );
-        Err(Error::from(ProgramError::InvalidArgument)
-            .with_account_name(field_name)
-            .with_pubkeys((*actual_owner, *owner))
-            .with_source(source!()))
-    }
-}
+// pub fn check_owner_program<'info, A: ToAccountInfo<'info>>(
+//     account: &A,
+//     owner: &Pubkey,
+//     field_name: &str,
+// ) -> Result<()> {
+//     let actual_owner = account.to_account_info().owner;
+//     if actual_owner == owner {
+//         Ok(())
+//     } else {
+//         msg!(
+//             "Invalid {} owner_program: expected {} got {}",
+//             field_name,
+//             owner,
+//             actual_owner
+//         );
+//         Err(Error::from(ProgramError::InvalidArgument)
+//             .with_account_name(field_name)
+//             .with_pubkeys((*actual_owner, *owner))
+//             .with_source(source!()))
+//     }
+// }
 
 // pub fn check_mint_authority(mint: &Mint, mint_authority: &Pubkey, field_name: &str) -> Result<()> {
 //     if mint.mint_authority.contains(mint_authority) {
