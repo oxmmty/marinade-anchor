@@ -123,14 +123,7 @@ macro_rules! require_lte {
     };
 }
 
-#[macro_export]
-macro_rules! require_lt {
-    ($value1: expr, $value2: expr, $error_code: expr $(,)?) => {
-        if $value1 >= $value2 {
-            return Err(error!($error_code).with_values(($value1, $value2)));
-        }
-    };
-}
+
 
 pub fn check_token_source_account<'info>(
     source_account: &Account<'info, TokenAccount>,
