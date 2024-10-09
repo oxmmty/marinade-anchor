@@ -25,19 +25,19 @@ use anchor_spl::token::{Mint, TokenAccount};
 //     }
 // }
 
-pub fn check_mint_authority(mint: &Mint, mint_authority: &Pubkey, field_name: &str) -> Result<()> {
-    if mint.mint_authority.contains(mint_authority) {
-        Ok(())
-    } else {
-        msg!(
-            "Invalid {} mint authority {}. Expected {}",
-            field_name,
-            mint.mint_authority.unwrap_or_default(),
-            mint_authority
-        );
-        Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
-    }
-}
+// pub fn check_mint_authority(mint: &Mint, mint_authority: &Pubkey, field_name: &str) -> Result<()> {
+//     if mint.mint_authority.contains(mint_authority) {
+//         Ok(())
+//     } else {
+//         msg!(
+//             "Invalid {} mint authority {}. Expected {}",
+//             field_name,
+//             mint.mint_authority.unwrap_or_default(),
+//             mint_authority
+//         );
+//         Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
+//     }
+// }
 
 pub fn check_freeze_authority(mint: &Mint, field_name: &str) -> Result<()> {
     if mint.freeze_authority.is_none() {
