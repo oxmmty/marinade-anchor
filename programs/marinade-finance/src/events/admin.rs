@@ -7,14 +7,14 @@ use super::{
 };
 
 #[event]
-pub struct ChangeAuthorityEvent {
-    pub state: Pubkey,
-    pub admin_change: Option<PubkeyValueChange>,
-    pub validator_manager_change: Option<PubkeyValueChange>,
-    pub operational_sol_account_change: Option<PubkeyValueChange>,
-    pub treasury_msol_account_change: Option<PubkeyValueChange>,
-    pub pause_authority_change: Option<PubkeyValueChange>,
-}
+// pub struct ChangeAuthorityEvent {
+//     pub state: Pubkey,
+//     pub admin_change: Option<PubkeyValueChange>,
+//     pub validator_manager_change: Option<PubkeyValueChange>,
+//     pub operational_sol_account_change: Option<PubkeyValueChange>,
+//     pub treasury_msol_account_change: Option<PubkeyValueChange>,
+//     pub pause_authority_change: Option<PubkeyValueChange>,
+// }
 
 #[event]
 pub struct ConfigLpEvent {
