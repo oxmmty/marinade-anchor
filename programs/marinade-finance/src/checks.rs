@@ -57,19 +57,19 @@ use anchor_spl::token::{Mint, TokenAccount};
 //     }
 // }
 
-pub fn check_token_mint(token: &TokenAccount, mint: &Pubkey, field_name: &str) -> Result<()> {
-    if token.mint == *mint {
-        Ok(())
-    } else {
-        msg!(
-            "Invalid token {} mint {}. Expected {}",
-            field_name,
-            token.mint,
-            mint
-        );
-        Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
-    }
-}
+// pub fn check_token_mint(token: &TokenAccount, mint: &Pubkey, field_name: &str) -> Result<()> {
+//     if token.mint == *mint {
+//         Ok(())
+//     } else {
+//         msg!(
+//             "Invalid token {} mint {}. Expected {}",
+//             field_name,
+//             token.mint,
+//             mint
+//         );
+//         Err(Error::from(ProgramError::InvalidAccountData).with_source(source!()))
+//     }
+// }
 
 pub fn check_token_owner(token: &TokenAccount, owner: &Pubkey, field_name: &str) -> Result<()> {
     if token.owner == *owner {
