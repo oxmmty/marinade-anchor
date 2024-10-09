@@ -62,9 +62,9 @@ use super::{
 // }
 
 #[event]
-pub struct ResumeEvent {
-    pub state: Pubkey,
-}
+// pub struct ResumeEvent {
+//     pub state: Pubkey,
+// }
 
 #[event]
 pub struct ReallocValidatorListEvent {
