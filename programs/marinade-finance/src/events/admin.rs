@@ -17,13 +17,13 @@ use super::{
 // }
 
 #[event]
-pub struct ConfigLpEvent {
-    pub state: Pubkey,
-    pub min_fee_change: Option<FeeValueChange>,
-    pub max_fee_change: Option<FeeValueChange>,
-    pub liquidity_target_change: Option<U64ValueChange>,
-    pub treasury_cut_change: Option<FeeValueChange>,
-}
+// pub struct ConfigLpEvent {
+//     pub state: Pubkey,
+//     pub min_fee_change: Option<FeeValueChange>,
+//     pub max_fee_change: Option<FeeValueChange>,
+//     pub liquidity_target_change: Option<U64ValueChange>,
+//     pub treasury_cut_change: Option<FeeValueChange>,
+// }
 
 #[event]
 pub struct ConfigMarinadeEvent {
