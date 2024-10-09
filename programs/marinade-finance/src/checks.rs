@@ -48,14 +48,14 @@ use anchor_spl::token::{Mint, TokenAccount};
 //     }
 // }
 
-pub fn check_mint_empty(mint: &Mint, field_name: &str) -> Result<()> {
-    if mint.supply == 0 {
-        Ok(())
-    } else {
-        msg!("Non empty mint {} supply: {}", field_name, mint.supply);
-        Err(Error::from(ProgramError::InvalidArgument).with_source(source!()))
-    }
-}
+// pub fn check_mint_empty(mint: &Mint, field_name: &str) -> Result<()> {
+//     if mint.supply == 0 {
+//         Ok(())
+//     } else {
+//         msg!("Non empty mint {} supply: {}", field_name, mint.supply);
+//         Err(Error::from(ProgramError::InvalidArgument).with_source(source!()))
+//     }
+// }
 
 pub fn check_token_mint(token: &TokenAccount, mint: &Pubkey, field_name: &str) -> Result<()> {
     if token.mint == *mint {
