@@ -57,9 +57,9 @@ use super::{
 // }
 
 #[event]
-pub struct EmergencyPauseEvent {
-    pub state: Pubkey,
-}
+// pub struct EmergencyPauseEvent {
+//     pub state: Pubkey,
+// }
 
 #[event]
 pub struct ResumeEvent {
