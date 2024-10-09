@@ -86,34 +86,34 @@ use anchor_spl::token::{Mint, TokenAccount};
 // }
 
 
-check that the account is delegated and to the right validator
-also that the stake amount is updated
-pub fn check_stake_amount_and_validator(
-    stake_state: &StakeState,
-    expected_stake_amount: u64,
-    validator_vote_pubkey: &Pubkey,
-) -> Result<()> {
-    let currently_staked = if let Some(delegation) = stake_state.delegation() {
-        require_keys_eq!(
-            delegation.voter_pubkey,
-            *validator_vote_pubkey,
-            MarinadeError::WrongValidatorAccountOrIndex
-        );
-        delegation.stake
-    } else {
-        return err!(MarinadeError::StakeNotDelegated);
-    };
-    // do not allow to operate on an account where last_update_delegated_lamports != currently_staked
-    if currently_staked != expected_stake_amount {
-        msg!(
-            "Operation on a stake account not yet updated. expected stake:{}, current:{}",
-            expected_stake_amount,
-            currently_staked
-        );
-        return err!(MarinadeError::StakeAccountNotUpdatedYet);
-    }
-    Ok(())
-}
+// check that the account is delegated and to the right validator
+// also that the stake amount is updated
+// pub fn check_stake_amount_and_validator(
+//     stake_state: &StakeState,
+//     expected_stake_amount: u64,
+//     validator_vote_pubkey: &Pubkey,
+// ) -> Result<()> {
+//     let currently_staked = if let Some(delegation) = stake_state.delegation() {
+//         require_keys_eq!(
+//             delegation.voter_pubkey,
+//             *validator_vote_pubkey,
+//             MarinadeError::WrongValidatorAccountOrIndex
+//         );
+//         delegation.stake
+//     } else {
+//         return err!(MarinadeError::StakeNotDelegated);
+//     };
+//     // do not allow to operate on an account where last_update_delegated_lamports != currently_staked
+//     if currently_staked != expected_stake_amount {
+//         msg!(
+//             "Operation on a stake account not yet updated. expected stake:{}, current:{}",
+//             expected_stake_amount,
+//             currently_staked
+//         );
+//         return err!(MarinadeError::StakeAccountNotUpdatedYet);
+//     }
+//     Ok(())
+// }
 
 
 #[macro_export]
