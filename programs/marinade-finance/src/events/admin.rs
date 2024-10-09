@@ -44,22 +44,22 @@ use super::{
 // TODO: ConfigValidatorSystemEvent?
 
 #[event]
-pub struct InitializeEvent {
-    pub state: Pubkey,
-    pub params: InitializeData,
-    pub stake_list: Pubkey,
-    pub validator_list: Pubkey,
-    pub msol_mint: Pubkey,
-    pub operational_sol_account: Pubkey,
-    pub lp_mint: Pubkey,
-    pub lp_msol_leg: Pubkey,
-    pub treasury_msol_account: Pubkey,
-}
+// pub struct InitializeEvent {
+//     pub state: Pubkey,
+//     pub params: InitializeData,
+//     pub stake_list: Pubkey,
+//     pub validator_list: Pubkey,
+//     pub msol_mint: Pubkey,
+//     pub operational_sol_account: Pubkey,
+//     pub lp_mint: Pubkey,
+//     pub lp_msol_leg: Pubkey,
+//     pub treasury_msol_account: Pubkey,
+// }
 
 #[event]
-pub struct EmergencyPauseEvent {
-    pub state: Pubkey,
-}
+// pub struct EmergencyPauseEvent {
+//     pub state: Pubkey,
+// }
 
 #[event]
 pub struct ResumeEvent {
