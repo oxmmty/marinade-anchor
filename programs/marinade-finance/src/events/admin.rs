@@ -74,8 +74,8 @@ use super::{
 // }
 
 #[event]
-pub struct ReallocStakeListEvent {
-    pub state: Pubkey,
-    pub count: u32,
-    pub new_capacity: u32,
-}
+// pub struct ReallocStakeListEvent {
+//     pub state: Pubkey,
+//     pub count: u32,
+//     pub new_capacity: u32,
+// }
